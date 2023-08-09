@@ -16,7 +16,7 @@ def process_gesture(recon):
 
 
 class App(tk.Tk):
-    def __init__(self, gesture_options=['THUMBS UP', 'POINTING UP', 'sas']):
+    def __init__(self, gesture_options=['closed_fist', 'victory', 'open_palm']):
         super().__init__()
 
         #self.geometry('720x480')
@@ -67,11 +67,14 @@ class App(tk.Tk):
         ##
         # GESTURES
         ##
+        self.gestures = {}
         for gesture in gesture_options:
             gesture_frame = tk.Frame(main, width=300, height=300, 
                 highlightbackground=BACKGROUND_COLOR, highlightthickness=50)
             
-            icon_render = ImageTk.PhotoImage(Image.open("open_palm.png"))
+            self.gestures[gesture] = gesture_frame
+            
+            icon_render = ImageTk.PhotoImage(Image.open('gestures/'+gesture+'/icon.png'))
             img = tk.Label(gesture_frame, image=icon_render, bg=BACKGROUND_COLOR2)
             img.image = icon_render
             img.pack(side=tk.RIGHT)
@@ -80,12 +83,19 @@ class App(tk.Tk):
             
 
         main.pack(expand=1, fill=tk.BOTH)
+        
+    def load_gesture(self, gesture, load_value):
+        #self.gestures[gesture].load(load_value)
+        pass
 
     def __move_window(self, event):
         self.geometry('+{0}+{1}'.format(event.x_root, event.y_root))
 
 
 if __name__=="__main__":
+    app = App()
+    
+    
     recognizer = GestureRecognizer()
     recognizer_thread = threading.Thread(target=recognizer.start, daemon=True)
     print_thread = threading.Thread(target=lambda: process_gesture(recognizer), daemon=True)
@@ -93,6 +103,5 @@ if __name__=="__main__":
     recognizer_thread.start()
     print_thread.start()
 
-    app = App()
     app.mainloop()
     
