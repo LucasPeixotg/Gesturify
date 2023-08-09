@@ -24,11 +24,11 @@ class GestureRecognizer:
         )
     
         self.mp_recognizer = GestureRecognizer.create_from_options(options)
-        self.current_gesture = None
+        self.current_gesture = 'None'
         
     def __result_callback(self, result, output_image: mp.Image, timestamp_ms: int):
         if result.gestures:
-            self.current_gesture = result.gestures[0][0]
+            self.current_gesture = result.gestures[0][0].category_name
             self.hand_landmarks = result.hand_landmarks[0]
         
     def process(self, img, timestamp_ms: int, draw=False):
@@ -58,7 +58,7 @@ class GestureRecognizer:
             # draw image for debug
             if self.__debug:              
                 if self.current_gesture:  
-                    cv2.putText(img, self.current_gesture.category_name, (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 255, 255), 1)
+                    cv2.putText(img, self.current_gesture, (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 255, 255), 1)
 
                     # draw hand landmarks
                     for _, lm in enumerate(self.hand_landmarks):
