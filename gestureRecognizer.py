@@ -30,6 +30,8 @@ class GestureRecognizer:
         if result.gestures:
             self.current_gesture = result.gestures[0][0].category_name
             self.hand_landmarks = result.hand_landmarks[0]
+        else:
+            self.current_gesture = 'None'
         
     def process(self, img, timestamp_ms: int, draw=False):
         mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=img)

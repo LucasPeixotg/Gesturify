@@ -1,0 +1,1 @@
+echo "palm script"

@@ -1,22 +1,45 @@
 import threading
+from components.gestureFrame import GestureFrame
 from components.roundedButton import RoundedButton
 from gestureRecognizer import GestureRecognizer
 
 import tkinter as tk
 from tkinter import ttk
 
-from PIL import ImageTk, Image
-
 from pallete import *
+import time
 
-def process_gesture(recon):
+import os
+
+GESTURES = ['Closed_Fist', 'Victory', 'Open_Palm']
+PROCESS_DELAY = 0.005
+
+def process_gesture(recon, app):
+    loading_value = 0
+    current_gesture = 'None'
+        
     while True:
-        #print(recon.current_gesture)
-        pass
+        gesture = recon.current_gesture
+        
+        if gesture != current_gesture:
+            if current_gesture in GESTURES: 
+                app.load_gesture(current_gesture, 0)
+            
+            current_gesture = gesture
+            loading_value = 0
 
+        if gesture in GESTURES:
+
+            loading_value += 1
+            app.load_gesture(gesture, loading_value)            
+            time.sleep(PROCESS_DELAY)
+            
+            if loading_value >= 360:
+                os.system('./gestures/'+gesture+'/script.sh')
+                app.destroy()
 
 class App(tk.Tk):
-    def __init__(self, gesture_options=['closed_fist', 'victory', 'open_palm']):
+    def __init__(self, gesture_options):
         super().__init__()
 
         #self.geometry('720x480')
@@ -69,36 +92,28 @@ class App(tk.Tk):
         ##
         self.gestures = {}
         for gesture in gesture_options:
-            gesture_frame = tk.Frame(main, width=300, height=300, 
-                highlightbackground=BACKGROUND_COLOR, highlightthickness=50)
+            gesture_frame = GestureFrame(main, gesture=gesture, icon_path='gestures/'+gesture+'/icon.png')
+            gesture_frame.pack(side=tk.RIGHT)
             
             self.gestures[gesture] = gesture_frame
-            
-            icon_render = ImageTk.PhotoImage(Image.open('gestures/'+gesture+'/icon.png'))
-            img = tk.Label(gesture_frame, image=icon_render, bg=BACKGROUND_COLOR2)
-            img.image = icon_render
-            img.pack(side=tk.RIGHT)
-            
-            gesture_frame.pack(side=tk.RIGHT)
             
 
         main.pack(expand=1, fill=tk.BOTH)
         
     def load_gesture(self, gesture, load_value):
-        #self.gestures[gesture].load(load_value)
-        pass
+        self.gestures[gesture].set_loading(load_value)
 
     def __move_window(self, event):
         self.geometry('+{0}+{1}'.format(event.x_root, event.y_root))
 
 
 if __name__=="__main__":
-    app = App()
     
+    app = App(gesture_options=GESTURES)
     
     recognizer = GestureRecognizer()
     recognizer_thread = threading.Thread(target=recognizer.start, daemon=True)
-    print_thread = threading.Thread(target=lambda: process_gesture(recognizer), daemon=True)
+    print_thread = threading.Thread(target=lambda: process_gesture(recognizer, app), daemon=True)
     
     recognizer_thread.start()
     print_thread.start()
