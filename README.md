@@ -1,9 +1,9 @@
-<p align="center">
+<!--<p align="center">
   <a href="" rel="noopener">
  <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Gesture Start Logo"></a>
 </p>
-
-<h3 align="center">Gesture Start</h3>
+-->
+<h1 align="center">Gesture Start</h1>
 
 <div align="center">
 
