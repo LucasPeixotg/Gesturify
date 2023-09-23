@@ -19,6 +19,19 @@
 <p align="center"> Execute scripts based on gesture detection  
     <br> 
 </p>
+
+
+## ⛏️ Built Using <a name = "built_using"></a>
+
+- [Python](https://www.python.org/)
+- [OpenCV](https://opencv.org/) 
+- [MediaPIPE](https://developers.google.com/mediapipe)
+
+## ✍️ Authors <a name = "authors"></a>
+
+- [@LucasPeixotg](https://github.com/lucaspeixotg) - Idea & Initial work
+
+
 <!--
 ## 📝 Table of Contents
 
@@ -88,13 +101,4 @@ Give an example
 -->
 
 
-## ⛏️ Built Using <a name = "built_using"></a>
-
-- [Python](https://www.python.org/)
-- [OpenCV](https://opencv.org/) 
-- [MediaPIPE](https://developers.google.com/mediapipe)
-
-## ✍️ Authors <a name = "authors"></a>
-
-- [@LucasPeixotg](https://github.com/lucaspeixotg) - Idea & Initial work
 
