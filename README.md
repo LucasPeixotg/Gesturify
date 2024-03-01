@@ -20,6 +20,9 @@
     <br> 
 </p>
 
+![Imagem de Exemplo 1](./example1.png)
+![Imagem de Exemplo 2](./example2.png)
+
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
