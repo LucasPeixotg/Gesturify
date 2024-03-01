@@ -16,7 +16,7 @@
 
 ---
 
-<p align="center"> Execute scripts based on gesture detection  
+<p align="center"> Executa scripts de acordo com gestos pré-definidos  
     <br> 
 </p>
 
