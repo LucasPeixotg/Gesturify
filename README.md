@@ -1,27 +1,18 @@
-<!--<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Gesture Start Logo"></a>
-</p>
--->
-<h1 align="center">Gestos</h1>
+# Gesturify
 
-<div align="center">
-
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/lucaspeixotg/gesture-start.svg)](https://github.com/lucaspeixotg/gesture-start/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/lucaspeixotg/gesture-start.svg)](https://github.com/lucaspeixotg/gesture-start/pulls)
-<!-- [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE) -->
-
+<p align="center">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/LucasPeixotg/Gesturify?color=285882">
+  <img alt="Github issues" src="https://img.shields.io/github/issues/LucasPeixotg/Gesturify?color=285882" />
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/LucasPeixotg/Gesturify?color=285882">
 </div>
 
----
 
-<p align="center"> Executa scripts de acordo com gestos pré-definidos  
-    <br> 
-</p>
+## About
+Desktop aplication to execute pre-defined scripts based on gesture recognition
 
-![Imagem de Exemplo 1](./example1.png)
-![Imagem de Exemplo 2](./example2.png)
+## Images
+![Example image 1](./example1.png)
+![Example image 2](./example2.png)
 
 
 ## ⛏️ Built Using <a name = "built_using"></a>
